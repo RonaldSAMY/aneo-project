@@ -1,0 +1,20 @@
+div.nav {
+    height: 50px;
+    width: 100vw;
+    padding: 5px 20px;
+}
+
+div.nav a {
+    text-decoration: none;
+    padding: 15px;
+    color: #FE5D9F;
+    transition: 300ms;
+    margin: 0 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px
+}
+
+div.nav a:hover,a.router-link-active{
+    background: #FE5D9F;
+    color: #F1E4F3!important;
+}
