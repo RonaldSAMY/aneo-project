@@ -1,1 +1,15 @@
-<p>article works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" *ngFor="let article of articleS.allArticles; let i = index">
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">{{article.title}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">{{article.slug}}</h6>
+                  <p class="card-text">{{article.body}}</p>
+                  <a [routerLink]="[ '/article',i ]" routerLinkActive="active" class="card-link">voir plus</a>
+                </div>
+              </div>
+        </div>
+    </div>
+    <aneo-app-paginator></aneo-app-paginator>
+</div>

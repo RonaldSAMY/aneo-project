@@ -1,37 +1,28 @@
-import { Injectable } from '@angular/core';
-import { HttpService } from './http.service';
+import { Injectable } from "@angular/core";
+import { HttpService } from "./http.service";
+import { Article } from "../interface/interfaces";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ArticleService {
+  public allArticles: Array<Article> = [];
 
-  constructor(private http:HttpService) {
-    this.getAllArticles()
+  public totalArticleCount: number = 0;
+
+  constructor(private http: HttpService) {
+    this.getAllArticles();
   }
 
   getAllArticles() {
-    this.http.get('/articles',{'limit':10}).subscribe(
-      (res:any) => {
-        let articles:Array<Article> = res.articles
-        console.log(articles)
+    this.http.get("/articles", { limit: 10 }).subscribe(
+      (res: any) => {
+        this.allArticles = res.articles;
+        this.totalArticleCount = res.articlesCount;
       },
       e => {
-        console.log(e)
+        console.log(e);
       }
-    )
+    );
   }
-}
-
-
-interface Article {
-  body:string,
-  description:string,
-  favorited:boolean,
-  favoritesCount:number,
-  slug:string,
-  taglist:Array<any>,
-  title:string,
-  createdAt:Date
-  updateAt:Date
 }
