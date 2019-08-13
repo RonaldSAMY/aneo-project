@@ -1,0 +1,30 @@
+import { Injectable } from '@angular/core'
+
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class HttpService {
+
+  constructor(private httpC: HttpClient) { }
+
+  post(data: Object, path: string, observeHeader: boolean = false) {
+    let formData = new FormData()
+    let url = environment.api_server+path;
+    return this.httpC.post(url, formData, { observe: 'response' })
+  }
+
+  get(path: string,data:Object = {}) {
+    let QueryString = Object.keys(data).map(key => key + '=' + data[key]).join('&');
+    let url = '';
+    if(data === {}) {
+      url = environment.api_server+path;
+    } else {
+      url = environment.api_server+path+'?'+QueryString;
+    }
+    return this.httpC.get(url)
+  }
+
+}
