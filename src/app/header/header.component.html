@@ -2,4 +2,5 @@
     <a [routerLink]="['/']" routerLinkActive="router-link-active">home</a>
     <a [routerLink]="['/login']" routerLinkActive="router-link-active">login</a>
     <a [routerLink]="['/register']" routerLinkActive="router-link-active">register</a>
+    <a [routerLink]="['/editor']" routerLinkActive="router-link-active" *ngIf="userS.userSigned">Editor</a>
 </div>

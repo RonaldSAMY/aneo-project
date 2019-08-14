@@ -1,1 +1,35 @@
-<p>article-detail works!</p>
+<div class="container" *ngIf="articleS.currentArticle == null">
+    <aneo-app-loader></aneo-app-loader>
+</div>
+<div class="container" *ngIf="articleS.currentArticle != null">
+    <h2>Article</h2>
+    <div class="row">
+        <div class="col-md-6">Title</div>
+        <div class="col-md-6">{{articleS.currentArticle.title}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">Slug</div>
+        <div class="col-md-6">{{articleS.currentArticle.slug}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">Body</div>
+        <div class="col-md-6">{{articleS.currentArticle.body}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">Description</div>
+        <div class="col-md-6">{{articleS.currentArticle.description}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">createdAt</div>
+        <div class="col-md-6">{{articleS.currentArticle.createdAt}}</div>
+    </div>
+    <h2>Auteur</h2>
+    <div class="row">
+        <div class="col-md-6">username</div>
+        <div class="col-md-6">{{articleS.currentArticle.author.username}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">Bio</div>
+        <div class="col-md-6">{{articleS.currentArticle.author.bio}}</div>
+    </div>
+</div>

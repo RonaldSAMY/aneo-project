@@ -4,13 +4,16 @@ import { ArticleComponent } from './article/article.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
+import { EditorComponent } from './editor/editor.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'/',pathMatch: 'full'},
-  {path:'',component:ArticleComponent},
-  {path:'article/:id',component:ArticleDetailComponent},
+  {path:'',component:ArticleComponent,pathMatch:'full'},
+  {path:'article/:slug',component:ArticleDetailComponent},
   {path:'login',component:LoginComponent},
-  {path:'register',component:RegisterComponent}
+  {path:'register',component:RegisterComponent},
+  {path:'editor',component:EditorComponent},
+  {path:'profile/:id',component:ProfileComponent}
 ];
 
 @NgModule({

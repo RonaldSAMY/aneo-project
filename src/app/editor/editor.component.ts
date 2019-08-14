@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../service/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-editor',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userS:UserService,private routeS:Router) { }
 
   ngOnInit() {
+    if(!this.userS.userSigned) {
+      this.routeS.navigate(['/'])
+    }
   }
 
 }

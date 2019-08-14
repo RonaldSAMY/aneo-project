@@ -1,16 +1,22 @@
-<form>
+<div class="container" *ngIf="userS.resiterLoder">
+    <aneo-app-loader></aneo-app-loader>
+</div>
+<form *ngIf="!userS.resiterLoder">
+    <ul *ngIf="userS.loginError.length != 0" class="Error">
+        <li *ngFor="let error of userS.loginError">
+            <b>{{error.field}}</b>
+            <ul>
+                <li *ngFor="let msg of error.msg">{{msg}}</li>
+            </ul>
+        </li>
+    </ul>
     <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <label for="email">Email address</label>
+        <input type="email" name='email' required class="form-control" id="email" placeholder="Enter email" [(ngModel)]="userS.loginUser.email">
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <label for="password">Password</label>
+        <input type="password" name='password' required class="form-control" id="password" placeholder="Password" [(ngModel)]="userS.loginUser.password">
     </div>
-    <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" (click)="userS.signIn()">Submit</button>
 </form>

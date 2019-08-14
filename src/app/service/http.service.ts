@@ -10,10 +10,19 @@ export class HttpService {
 
   constructor(private httpC: HttpClient) { }
 
-  post(data: Object, path: string, observeHeader: boolean = false) {
+  post(data: Object, path: string) {
     let formData = new FormData()
     let url = environment.api_server+path;
-    return this.httpC.post(url, formData, { observe: 'response' })
+    for ( var key in data ) {
+      if(data[key] instanceof Array) {
+        data[key].forEach(e => {
+          formData.append(key+'[]',e)
+        })
+      } else {
+        formData.append(key, data[key]);
+      }
+    }
+    return this.httpC.post(url, data)
   }
 
   get(path: string,data:Object = {}) {

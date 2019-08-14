@@ -17,3 +17,27 @@ export interface Author {
   image: string;
   username: string;
 }
+
+export interface User {
+  email: string;
+  token: string;
+  username: string;
+  bio: string;
+  images: string;
+}
+
+export interface NewUser {
+  username: string;
+  email: string;
+  password: string
+}
+
+export interface LoginUser {
+  email: string;
+  password: string
+}
+
+export interface ErrorAneo {
+  field: string,
+  msg: Array<string>
+}

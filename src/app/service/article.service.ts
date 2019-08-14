@@ -7,6 +7,8 @@ import { Article } from "../interface/interfaces";
 })
 export class ArticleService {
   public allArticles: Array<Article> = [];
+  public currentArticle:Article = null;
+
 
   public totalArticleCount: number = 0;
 
@@ -25,4 +27,18 @@ export class ArticleService {
       }
     );
   }
+
+  getSingleArticle(slug:String) {
+    this.currentArticle = null
+    let url = "/articles/"+slug
+    this.http.get(url,{}).subscribe(
+      (res: any) => {
+        this.currentArticle = res.article
+      },
+      e => {
+        console.log(e);
+      }
+    )
+  }
+
 }

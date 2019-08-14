@@ -1,14 +1,18 @@
-<div class="container">
+<div class="container" *ngIf="articleS.allArticles.length == 0">
+    <aneo-app-loader></aneo-app-loader>
+</div>
+<div class="container" *ngIf="articleS.allArticles.length != 0">
     <div class="row">
         <div class="col-md-3" *ngFor="let article of articleS.allArticles; let i = index">
             <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">{{article.title}}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">{{article.slug}}</h6>
-                  <p class="card-text">{{article.body}}</p>
-                  <a [routerLink]="[ '/article',i ]" routerLinkActive="active" class="card-link">voir plus</a>
+                    <h5 class="card-title">{{article.title}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{article.slug}}</h6>
+                    <p class="card-text">{{article.body}}</p>
+                    <a [routerLink]="[ '/article',article.slug ]" routerLinkActive="active" class="card-link">voir plus</a>
+                    <a [routerLink]="[ '/profile',article.slug ]" routerLinkActive="active" class="card-link">Auteur</a>
                 </div>
-              </div>
+            </div>
         </div>
     </div>
     <aneo-app-paginator></aneo-app-paginator>
