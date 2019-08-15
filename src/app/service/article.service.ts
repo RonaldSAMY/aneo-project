@@ -9,21 +9,27 @@ export class ArticleService {
   public allArticles: Array<Article> = [];
   public currentArticle:Article = null;
 
-
   public totalArticleCount: number = 0;
 
+  public httpReqOnProcess:boolean = false
+
   constructor(private http: HttpService) {
-    this.getAllArticles();
+    //this.getAllArticles();
   }
 
-  getAllArticles() {
-    this.http.get("/articles", { limit: 10 }).subscribe(
+  getAllArticles(offset:number = 0,cb:Function) {
+    this.httpReqOnProcess = true
+    console.log('call initated')
+    this.http.get("/articles", { limit: 10, offset: offset }).subscribe(
       (res: any) => {
         this.allArticles = res.articles;
-        this.totalArticleCount = res.articlesCount;
+        //this.totalArticleCount = res.articlesCount;
+        this.httpReqOnProcess = false
+        cb(res.articlesCount)
       },
       e => {
         console.log(e);
+        this.httpReqOnProcess = false
       }
     );
   }
@@ -39,6 +45,19 @@ export class ArticleService {
         console.log(e);
       }
     )
+  }
+
+  getAutherArticles(author:String,offset:number = 0,cb:Function) {
+    this.http.get("/articles", { limit: 10,author:author,offset:offset }).subscribe(
+      (res: any) => {
+        this.allArticles = res.articles;
+        this.totalArticleCount = res.articlesCount;
+        console.log(this.totalArticleCount)
+      },
+      e => {
+        console.log(e);
+      }
+    );
   }
 
 }

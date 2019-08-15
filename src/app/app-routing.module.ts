@@ -6,14 +6,18 @@ import { RegisterComponent } from './register/register.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { EditorComponent } from './editor/editor.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 const routes: Routes = [
-  {path:'',component:ArticleComponent,pathMatch:'full'},
+  {path:'',redirectTo:'/',pathMatch:'full'},
+  {path:'',component:PaginatorComponent},
+  {path:'page/:page',component:PaginatorComponent},
   {path:'article/:slug',component:ArticleDetailComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'editor',component:EditorComponent},
-  {path:'profile/:id',component:ProfileComponent}
+  {path:'profile/:id',component:ProfileComponent},
+  {path:'profile/:id/page/:page',component:PaginatorComponent}
 ];
 
 @NgModule({

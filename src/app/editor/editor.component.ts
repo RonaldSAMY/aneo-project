@@ -12,7 +12,7 @@ export class EditorComponent implements OnInit {
   constructor(private userS:UserService,private routeS:Router) { }
 
   ngOnInit() {
-    if(!this.userS.userSigned) {
+    if(this.userS.connectedUser == null) {
       this.routeS.navigate(['/'])
     }
   }

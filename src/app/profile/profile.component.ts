@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ProfileService } from '../service/profile.service';
+import { ActivatedRoute } from '@angular/router';
+import { ArticleService } from '../service/article.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(public profileS:ProfileService, private routeS:ActivatedRoute,private articleS:ArticleService) { }
 
   ngOnInit() {
+    let id;
+    this.routeS.params.subscribe(
+      param => {
+        id = param.id
+        this.profileS.getUser(id)
+        //this.articleS.getAutherArticles(id)
+      }
+    )
   }
 
 }

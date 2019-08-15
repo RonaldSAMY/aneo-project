@@ -1,1 +1,27 @@
-<p>editor works!</p>
+<form *ngIf="!userS.resiterLoder">
+    <ul *ngIf="userS.loginError.length != 0" class="Error">
+        <li *ngFor="let error of userS.loginError">
+            <b>{{error.field}}</b>
+            <ul>
+                <li *ngFor="let msg of error.msg">{{msg}}</li>
+            </ul>
+        </li>
+    </ul>
+    <div class="form-group">
+        <label for="email">Title</label>
+        <input type="email" name='text' required class="form-control" id="email" placeholder="Enter email" [(ngModel)]="userS.loginUser.email">
+    </div>
+    <div class="form-group">
+        <label for="email">Description</label>
+        <textarea name="" class="form-control" id="" cols="30" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="email">Contenu</label>
+        <textarea name="" class="form-control" id="" cols="30" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="email">Tags</label>
+        <input type="email" name='text' required class="form-control" id="email" placeholder="Enter email" [(ngModel)]="userS.loginUser.email">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="userS.signIn()">Submit</button>
+</form>

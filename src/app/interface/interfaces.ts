@@ -41,3 +41,10 @@ export interface ErrorAneo {
   field: string,
   msg: Array<string>
 }
+
+export interface Profile {
+  username: string;
+  bio: string;
+  image: string;
+  following: string;
+}

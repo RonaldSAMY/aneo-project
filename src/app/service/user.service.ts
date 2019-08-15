@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
-import { NewUser, ErrorAneo, LoginUser } from '../interface/interfaces';
+import { NewUser, ErrorAneo, LoginUser, User } from '../interface/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+  public connectedUser: User = null
 
   // ------------------ REGISTER ------------------------------------
 
@@ -34,7 +36,7 @@ export class UserService {
 
   public userSigned:boolean = false;
 
-  constructor(private http: HttpService) { }
+  constructor(private http: HttpService) { this.getUserFromLocalStorage() }
 
   register() {
     this.registerError = []
@@ -42,10 +44,8 @@ export class UserService {
     let user = {
       "user":this.registerUser
     }
-    console.log(user)
     this.http.post(user, "/users").subscribe(
       (res:any) => {
-        console.log(res)
         this.resiterLoder = false;
       },e => {
         let err = e.error.errors
@@ -72,7 +72,8 @@ export class UserService {
 
     this.http.post(user,"/users/login").subscribe(
       (res:any) => {
-        console.log(res)
+        this.connectedUser = res.user
+        localStorage.setItem('connectedUser',JSON.stringify(this.connectedUser))
         this.resiterLoder = false
       },e => {
         let err = e.error.errors
@@ -90,6 +91,13 @@ export class UserService {
     )
 
 
+  }
+
+  getUserFromLocalStorage() {
+    let connectedUser = localStorage.getItem('connectedUser')
+    if(connectedUser != undefined) {
+      this.connectedUser = JSON.parse(connectedUser)
+    }
   }
 
   

@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { LoaderComponent } from './loader/loader.component';
+import { CreateArticleComponent } from './create-article/create-article.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LoaderComponent } from './loader/loader.component';
     HeaderComponent,
     PaginatorComponent,
     ArticleDetailComponent,
-    LoaderComponent
+    LoaderComponent,
+    CreateArticleComponent
   ],
   imports: [
     BrowserModule,
