@@ -36,4 +36,9 @@ export class HttpService {
     return this.httpC.get(url)
   }
 
+  delete(path: string) {
+    let url = environment.api_server+path;
+    return this.httpC.delete(path)
+  }
+
 }

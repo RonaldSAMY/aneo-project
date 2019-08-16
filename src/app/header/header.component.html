@@ -1,6 +1,8 @@
 <div class="nav">
-    <a [routerLink]="['/']" routerLinkActive="router-link-active">home</a>
-    <a [routerLink]="['/login']" routerLinkActive="router-link-active" *ngIf="userS.connectedUser == null">login</a>
-    <a [routerLink]="['/register']" routerLinkActive="router-link-active" *ngIf="userS.connectedUser == null">register</a>
-    <a [routerLink]="['/editor']" routerLinkActive="router-link-active" *ngIf="userS.connectedUser != null">Editor</a>
+    <a routerLink="" class="home-link">ConduitApp</a>
+    <a routerLink="/login" routerLinkActive="active" *ngIf="userS.connectedUser == null">login</a>
+    <a routerLink="/register" routerLinkActive="active" *ngIf="userS.connectedUser == null">register</a>
+    <a routerLink="/editor" routerLinkActive="active" *ngIf="userS.connectedUser != null">Editor</a>
+    <a routerLink="/search" routerLinkActive="active">Search</a>
+    <a *ngIf="userS.connectedUser != null" (click)="disconnect()">Deconnect</a>
 </div>

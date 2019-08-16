@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+div.article-detail{
+    font-family: 'Montserrat', sans-serif;
+}
+div.article-detail em{
+    display: block;
+
+}

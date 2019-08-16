@@ -9,6 +9,8 @@ export class ProfileService {
 
   public currentUser:Profile = null;
 
+  public profilePage:boolean = false
+
   constructor(private http:HttpService) { }
 
   getUser(username:string) {

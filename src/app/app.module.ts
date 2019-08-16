@@ -10,11 +10,13 @@ import { EditorComponent } from './editor/editor.component';
 import { ArticleComponent } from './article/article.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HeaderComponent } from './header/header.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { LoaderComponent } from './loader/loader.component';
 import { CreateArticleComponent } from './create-article/create-article.component';
+import { HttpInterceptorService } from './service/http-interceptor.service';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { CreateArticleComponent } from './create-article/create-article.componen
     PaginatorComponent,
     ArticleDetailComponent,
     LoaderComponent,
-    CreateArticleComponent
+    CreateArticleComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import { CreateArticleComponent } from './create-article/create-article.componen
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:HttpInterceptorService,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

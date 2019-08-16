@@ -100,6 +100,11 @@ export class UserService {
     }
   }
 
+  disconnect() {
+    localStorage.removeItem('connectedUser')
+    this.connectedUser = null
+  }
+
   
 
 }

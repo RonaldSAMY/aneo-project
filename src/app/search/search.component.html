@@ -1,0 +1,13 @@
+<div class="container-fluid">
+    <div class="search">
+        <input type="text" (keyup)="search($event.target.value)">
+    </div>
+    <div class="option">
+        <button class="btn" [class.btn-info]="searchByAuteur" (click)="switchOption()">Auteur</button>
+        <button class="btn" [class.btn-info]="!searchByAuteur" (click)="switchOption()">tags</button>
+    </div>
+
+    <div class="results" *ngIf="showResults">
+        <aneo-app-paginator></aneo-app-paginator>
+    </div>
+</div>

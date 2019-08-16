@@ -1,35 +1,25 @@
 <div class="container" *ngIf="articleS.currentArticle == null">
     <aneo-app-loader></aneo-app-loader>
 </div>
-<div class="container" *ngIf="articleS.currentArticle != null">
-    <h2>Article</h2>
-    <div class="row">
-        <div class="col-md-6">Title</div>
-        <div class="col-md-6">{{articleS.currentArticle.title}}</div>
+<div class="container article-detail" *ngIf="articleS.currentArticle != null">
+    <h1 class="text-center">{{articleS.currentArticle.title}}</h1>
+    <em class="text-center"><span>{{articleS.currentArticle.slug}}</span></em>
+    <div class="date">
+        <em class="date-create">{{articleS.currentArticle.createdAt}}</em>
+        <em class="date-updated">{{articleS.currentArticle.updatedAt}}</em>
     </div>
-    <div class="row">
-        <div class="col-md-6">Slug</div>
-        <div class="col-md-6">{{articleS.currentArticle.slug}}</div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">Body</div>
-        <div class="col-md-6">{{articleS.currentArticle.body}}</div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">Description</div>
-        <div class="col-md-6">{{articleS.currentArticle.description}}</div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">createdAt</div>
-        <div class="col-md-6">{{articleS.currentArticle.createdAt}}</div>
-    </div>
-    <h2>Auteur</h2>
-    <div class="row">
-        <div class="col-md-6">username</div>
-        <div class="col-md-6">{{articleS.currentArticle.author.username}}</div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">Bio</div>
-        <div class="col-md-6">{{articleS.currentArticle.author.bio}}</div>
+    <p>{{articleS.currentArticle.description}}</p>
+    <p>{{articleS.currentArticle.body}}</p>
+    <ul>
+        <li *ngFor="let tag of articleS.currentArticle.tagList">{{tag}}</li>
+    </ul>
+    <div class="auteur">
+        <div class="image">
+            <img src="{{articleS.currentArticle.author.image}}" alt="" srcset="">
+        </div>
+        <div class="detail">
+            <h2><a [routerLink]="[ '/profile',articleS.currentArticle.author.username ]">{{articleS.currentArticle.author.username}}</a>
+            </h2>
+        </div>
     </div>
 </div>

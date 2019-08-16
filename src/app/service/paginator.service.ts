@@ -24,8 +24,7 @@ export class PaginatorService {
 
   public getCurrentPageArticles(page:number,AuterArticals = null) {
     this.currentPage = page
-    this.initiateArticle()
-    console.log(this.articleS.allArticles)
+    //this.initiateArticle()
     if(AuterArticals == null) {
       this.articleS.getAllArticles(this.calculOffset(page),this.totalArticles)
     } else {
@@ -63,8 +62,13 @@ export class PaginatorService {
   }
 
   public getAfficheTable() {
-    console.log(this.totalPagesCount)
+    //console.log(this.totalPagesCount)
     let max_total = 6
+
+    if(this.totalPagesCount < max_total) {
+      return this.pageCountTable = this.range(1,this.totalPagesCount+1)
+    } 
+
     let rightCalcul = +this.currentPage+3 > this.totalPagesCount ? true : false
     let leftCalcul = this.currentPage-3 < 1 ? true : false
     this.pageCountTable = []
@@ -80,7 +84,7 @@ export class PaginatorService {
       start = this.currentPage-3
       stop = +this.currentPage+3,1
     }
-    console.log(start,stop)
+    //console.log(start,stop)
     return this.pageCountTable = this.range(start,stop)
   }
 

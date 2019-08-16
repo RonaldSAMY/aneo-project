@@ -4,11 +4,18 @@ export interface Article {
   favorited: boolean;
   favoritesCount: number;
   slug: string;
-  taglist: Array<any>;
+  tagList: Array<any>;
   title: string;
   createdAt: Date;
-  updateAt: Date;
+  updatedAt: Date;
   author: Author;
+}
+
+export interface NewArticle {
+  title: string;
+  description: string;
+  body: string;
+  tagList: Array<string>;
 }
 
 export interface Author {
@@ -29,17 +36,17 @@ export interface User {
 export interface NewUser {
   username: string;
   email: string;
-  password: string
+  password: string;
 }
 
 export interface LoginUser {
   email: string;
-  password: string
+  password: string;
 }
 
 export interface ErrorAneo {
-  field: string,
-  msg: Array<string>
+  field: string;
+  msg: Array<string>;
 }
 
 export interface Profile {

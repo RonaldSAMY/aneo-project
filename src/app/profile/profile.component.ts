@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProfileService } from '../service/profile.service';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from '../service/article.service';
@@ -8,9 +8,9 @@ import { ArticleService } from '../service/article.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit,OnDestroy {
 
-  constructor(public profileS:ProfileService, private routeS:ActivatedRoute,private articleS:ArticleService) { }
+  constructor(public profileS:ProfileService, private routeS:ActivatedRoute) { }
 
   ngOnInit() {
     let id;
@@ -18,9 +18,15 @@ export class ProfileComponent implements OnInit {
       param => {
         id = param.id
         this.profileS.getUser(id)
-        //this.articleS.getAutherArticles(id)
+        this.profileS.profilePage = true
       }
     )
+  }
+
+  ngOnDestroy(): void {
+    console.log('destroy')
+    this.profileS.currentUser = null
+    this.profileS.profilePage = false
   }
 
 }

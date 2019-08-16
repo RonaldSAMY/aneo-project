@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ArticleService } from '../service/article.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaginatorService } from '../service/paginator.service';
+import { ProfileService } from '../service/profile.service';
 
 @Component({
   selector: 'aneo-app-paginator',
@@ -9,9 +10,6 @@ import { PaginatorService } from '../service/paginator.service';
   styleUrls: ['./paginator.component.css']
 })
 export class PaginatorComponent implements OnInit {
-
-  @Input() Auter = null
-
   public currentPage:number = 1
 
   public pageCountTable:Array<number> = []
@@ -19,11 +17,7 @@ export class PaginatorComponent implements OnInit {
   public totalPages:number = 0
 
 
-  constructor(public paginatorS:PaginatorService ,private routerS:Router, private routeS:ActivatedRoute) { 
-    
-  }
-
-  ngOnInit() {
+  constructor(public paginatorS:PaginatorService ,private routerS:Router, private routeS:ActivatedRoute,private profileS:ProfileService,private articleS:ArticleService) { 
     let page
     this.routeS.params.subscribe(
       param => {
@@ -31,38 +25,28 @@ export class PaginatorComponent implements OnInit {
         if(page == undefined) {
           page = 1
         }
+        console.log(page)
         this.currentPage = page
-        this.paginatorS.getCurrentPageArticles(page,this.Auter)
+        if(this.profileS.currentUser != null) {
+          this.paginatorS.getCurrentPageArticles(page,this.profileS.currentUser.username)
+        } else if(!this.articleS.searchPage) {
+          this.paginatorS.getCurrentPageArticles(page)
+        }
       }
     )
   }
 
-
-  public nextPage() {
-    let curPage = +this.currentPage+1
-    let nextpage = "/page/"+curPage
-    //this.initiateArticle()
-    this.routerS.navigate([nextpage])
-  }
-
-  public prevPage() {
-    let curPage = +this.currentPage-1
-    if(curPage < 1) {
-      curPage = 1
-    }
-    let prevpage = "/page/"+curPage
-    //this.initiateArticle()
-    this.routerS.navigate([prevpage])
+  ngOnInit() {
+    
   }
 
 
   public goto(page:number) {
-    if(this.Auter == null) {
-      this.routerS.navigate(['profile',this.Auter,'page',page])
+    if(this.profileS.currentUser != null) {
+      this.routerS.navigate(['profile',this.profileS.currentUser.username,'page',page])
     } else {
       this.routerS.navigate(['page',page])
     }
-    
   }
 
 }

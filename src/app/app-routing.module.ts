@@ -7,17 +7,19 @@ import { ArticleDetailComponent } from './article-detail/article-detail.componen
 import { EditorComponent } from './editor/editor.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PaginatorComponent } from './paginator/paginator.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'/',pathMatch:'full'},
-  {path:'',component:PaginatorComponent},
-  {path:'page/:page',component:PaginatorComponent},
+  {path:'search',component:SearchComponent},
   {path:'article/:slug',component:ArticleDetailComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'editor',component:EditorComponent},
+  {path:'profile/:id/page/:page',component:ProfileComponent},
+  {path:'page/:page',component:PaginatorComponent},
   {path:'profile/:id',component:ProfileComponent},
-  {path:'profile/:id/page/:page',component:PaginatorComponent}
+  {path:'',component:PaginatorComponent,pathMatch:'full'},
+  {path:'',redirectTo:'/',pathMatch:'full'},
 ];
 
 @NgModule({

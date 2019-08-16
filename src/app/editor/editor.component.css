@@ -1,0 +1,16 @@
+ul.taglist li {
+    list-style: none;
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
+
+ul.taglist li span {
+    float: right;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+ul.Error li {
+    list-style: none;
+    color: red;
+}

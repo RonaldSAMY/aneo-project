@@ -13,7 +13,7 @@ export class ArticleDetailComponent implements OnInit {
   public currentArticle:Article;
 
   constructor(private routeS:ActivatedRoute,public articleS:ArticleService) {
-    this.articleS.getAllArticles()
+    //this.articleS.getAllArticles()
   }
 
   ngOnInit() {
