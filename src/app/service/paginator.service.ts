@@ -21,7 +21,11 @@ export class PaginatorService {
     
   }
 
-
+  /**
+   * pour prend l'aricle de la page current
+   * @param page 
+   * @param AuterArticals 
+   */
   public getCurrentPageArticles(page:number,AuterArticals = null) {
     this.currentPage = page
     //this.initiateArticle()
@@ -33,17 +37,28 @@ export class PaginatorService {
     
   }
 
+  /**
+   * pour reinitalise article tableau
+   */
   public initiateArticle() {
     this.articleS.allArticles = []
     this.articleS.totalArticleCount = 0
   }
 
+  /**
+   * ce une method callback 
+   * une fois que la method getarticles est appellé 
+   * on calcul nbr de page a partire de la resultat
+   */
   public totalArticles = (count:number) => {
     this.totalArticleCount = count
     this.getTotalPagesCount()
     this.getAfficheTable()
   }
 
+  /**
+   * ce method pour calculé nbr de page par rapport la retour
+   */
   public getTotalPagesCount() {
 
     let total
@@ -55,12 +70,18 @@ export class PaginatorService {
     this.totalPagesCount = total
   }
 
+  /**
+   * ce method est appellé pour calculé offset concernent la page current
+   */
   private calculOffset(page:number) {
     let offset = page - 1
         offset = offset * 10
     return offset
   }
 
+  /**
+   * pour faire calcul par rapport la table de page nbr
+   */
   public getAfficheTable() {
     //console.log(this.totalPagesCount)
     let max_total = 6
@@ -88,6 +109,9 @@ export class PaginatorService {
     return this.pageCountTable = this.range(start,stop)
   }
 
+  /**
+   * ce une method facilite faire range
+   */
   public range = (start,stop,step =1) => {
     let res = []
     for(let i = start;i<stop;i+=step) {  

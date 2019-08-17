@@ -12,10 +12,18 @@ export class ArticleDetailComponent implements OnInit {
 
   public currentArticle:Article;
 
-  constructor(private routeS:ActivatedRoute,public articleS:ArticleService) {
-    //this.articleS.getAllArticles()
-  }
+  /**
+   * 
+   * @param routeS 
+   * @param articleS 
+   */
+  constructor(private routeS:ActivatedRoute,public articleS:ArticleService) { }
 
+  /**
+   * ce une method lifecycle
+   * ce method est appelle chaque fois l'utilisateur arrive das ce page
+   * 
+   */
   ngOnInit() {
     let slug
     this.routeS.params.subscribe(

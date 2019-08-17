@@ -10,8 +10,16 @@ import { ArticleService } from '../service/article.service';
 })
 export class ProfileComponent implements OnInit,OnDestroy {
 
+  /**
+   * 
+   * @param profileS 
+   * @param routeS 
+   */
   constructor(public profileS:ProfileService, private routeS:ActivatedRoute) { }
 
+  /**
+   * 
+   */
   ngOnInit() {
     let id;
     this.routeS.params.subscribe(
@@ -23,6 +31,9 @@ export class ProfileComponent implements OnInit,OnDestroy {
     )
   }
 
+  /**
+   * 
+   */
   ngOnDestroy(): void {
     console.log('destroy')
     this.profileS.currentUser = null

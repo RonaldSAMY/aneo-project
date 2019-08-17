@@ -30,7 +30,10 @@ export class ArticleService {
   }
 
  
-
+  /**
+   * prends uniquement l'article demander
+   * @param slug 
+   */
   getSingleArticle(slug: String) {
     this.currentArticle = null;
     let url = "/articles/" + slug;
@@ -44,6 +47,11 @@ export class ArticleService {
     );
   }
 
+  /**
+   * prends tous les articles 
+   * @param offset 
+   * @param cb 
+   */
   getAllArticles(offset: number = 0, cb: Function) {
     let params = {
       limit: 10,
@@ -53,6 +61,12 @@ export class ArticleService {
     this.getArticles(params,cb)
   }
 
+  /**
+   * prends les articles de utilisateur
+   * @param author 
+   * @param offset 
+   * @param cb 
+   */
   getAutherArticles(author: String, offset: number = 0, cb: Function) {
     let params = {
       limit: 10,
@@ -63,6 +77,12 @@ export class ArticleService {
     this.getArticles(params,cb)
   }
 
+  /**
+   * prends les articles par rapport le tag
+   * @param tag 
+   * @param offset 
+   * @param cb 
+   */
   gettagArticle(tag:string,offset: number = 0,cb: Function) {
     let params = {
       limit: 10,
@@ -73,12 +93,21 @@ export class ArticleService {
     this.getArticles(params,cb)
   }
 
+  /**
+   * supprime l'article
+   * @param slug 
+   */
   removeArticle(slug) {
     return this.http.delete('/articles/'+slug)
   }
 
-
-
+  /**
+   * ce method est appellé par different method 
+   * par rapport parameter qu'on veut on appelle ce method
+   * ex getAutherArticles,gettagArticle ...
+   * @param parameters 
+   * @param cb 
+   */
   private getArticles(parameters:object = {},cb:Function) {
     this.httpReqOnProcess = true;
     this.http.get("/articles", parameters).subscribe(
@@ -94,6 +123,9 @@ export class ArticleService {
     );
   }
 
+  /**
+   * ce method est appel pour créé nouvelle article
+   */
   addNewArticle() {
     let article = {
       'article':this.newArticle

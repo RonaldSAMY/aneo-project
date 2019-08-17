@@ -12,14 +12,26 @@ export class EditorComponent implements OnInit {
 
   public tag:string = '';
 
+  /**
+   * 
+   * @param userS 
+   * @param routeS 
+   * @param articleS 
+   */
   constructor(private userS:UserService,private routeS:Router,public articleS:ArticleService) { }
 
+  /**
+   * si utilisateur n'est pas connecter on redirrige vers page d'acceuil
+   */
   ngOnInit() {
     if(this.userS.connectedUser == null) {
       this.routeS.navigate(['/'])
     }
   }
 
+  /**
+   * ce method est appelle pour ajouter des tags dans le tableau des tags
+   */
   addTag() {
     console.log(this.tag)
     if(this.tag != "") {
@@ -28,6 +40,9 @@ export class EditorComponent implements OnInit {
     this.tag = ''
   }
 
+  /**
+   * ce method est appelle pour supprimer les tags de tableau
+   */
   removeTag(index:number) {
     let newTagList = []
     this.articleS.newArticle.tagList.map(

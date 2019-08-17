@@ -2,7 +2,9 @@ div.card {
     height: 250px;
     margin-bottom: 20px;
     box-shadow: 1px 1px 10px 2px #cacaca;
+    overflow: hidden;
 }
+
 
 /*----------- AUTEUR ------------------*/
 
@@ -10,28 +12,32 @@ div.auteur {
     height: 100px;
 }
 
-div.auteur div.image {
+
+/*div.auteur div.image {
     height: 80px;
     display: inline-block;
     width: 30%;
     position: absolute;
 }
 
-div.auteur div.image img{
+div.auteur div.image img {
     width: 100%;
     border-radius: 50px;
 }
+
 div.auteur div.detail {
     display: inline-block;
     position: absolute;
     left: 100px;
     padding: 15px;
-}
-div.auteur div.detail h2{
+}*/
+
+div.auteur div.detail h2 {
     font-size: 14px;
     margin-bottom: 2px;
 }
-div.auteur div.detail h2 a{ 
+
+div.auteur div.detail h2 a {
     color: #77CBB9;
     text-decoration: none;
 }
@@ -41,19 +47,21 @@ div.auteur div.detail em {
     color: #b7a4ba!important;
 }
 
+
 /* ------------------- ARTICLE -----------*/
 
-div.article h2{
+div.article h2 {
     font-size: 20px;
     margin: 2px;
     margin-bottom: 10px;
 }
-div.article h3{
+
+div.article h3 {
     font-size: 16px;
     margin: 5px
 }
 
-div.article a{
+div.article a {
     font-size: 15px;
     color: #b7a4ba!important;
     text-decoration: none

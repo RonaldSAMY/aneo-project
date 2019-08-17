@@ -1,8 +1,15 @@
-<div class="nav">
-    <a routerLink="" class="home-link">ConduitApp</a>
-    <a routerLink="/login" routerLinkActive="active" *ngIf="userS.connectedUser == null">login</a>
-    <a routerLink="/register" routerLinkActive="active" *ngIf="userS.connectedUser == null">register</a>
-    <a routerLink="/editor" routerLinkActive="active" *ngIf="userS.connectedUser != null">Editor</a>
-    <a routerLink="/search" routerLinkActive="active">Search</a>
-    <a *ngIf="userS.connectedUser != null" (click)="disconnect()">Deconnect</a>
-</div>
+<nav class="nav navbar navbar-expand-sm navbar-light bg-light">
+    <a class="navbar-brand home-link" routerLink="">ConduitApp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" routerLink="/login" routerLinkActive="active" *ngIf="userS.connectedUser == null">login</a>
+            <a class="nav-item nav-link" routerLink="/register" routerLinkActive="active" *ngIf="userS.connectedUser == null">register</a>
+            <a class="nav-item nav-link" routerLink="/editor" routerLinkActive="active" *ngIf="userS.connectedUser != null">Editor</a>
+            <a class="nav-item nav-link" routerLink="/search" routerLinkActive="active">Search</a>
+            <a class="nav-item nav-link" *ngIf="userS.connectedUser != null" (click)="disconnect()">Deconnect</a>
+        </div>
+    </div>
+</nav>

@@ -8,6 +8,10 @@ import { UserService } from '../service/user.service';
 })
 export class LoginComponent implements OnInit {
 
+  /**
+   * 
+   * @param userS 
+   */
   constructor(public userS:UserService) { }
 
   ngOnInit() {

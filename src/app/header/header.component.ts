@@ -9,11 +9,19 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  /**
+   * 
+   * @param userS 
+   * @param routeS 
+   */
   constructor(public userS:UserService, private routeS:Router) { }
 
   ngOnInit() {
   }
 
+  /**
+   * si le boutton deconnect est clické on redirige l'utilisateur ver page d'acceuil
+   */
   disconnect() {
     this.userS.disconnect()
     if(this.userS.connectedUser == null) {

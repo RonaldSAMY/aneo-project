@@ -14,7 +14,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { LoaderComponent } from './loader/loader.component';
-import { CreateArticleComponent } from './create-article/create-article.component';
 import { HttpInterceptorService } from './service/http-interceptor.service';
 import { SearchComponent } from './search/search.component';
 
@@ -30,7 +29,6 @@ import { SearchComponent } from './search/search.component';
     PaginatorComponent,
     ArticleDetailComponent,
     LoaderComponent,
-    CreateArticleComponent,
     SearchComponent
   ],
   imports: [

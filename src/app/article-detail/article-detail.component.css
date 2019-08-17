@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-div.article-detail{
+div.article-detail {
     font-family: 'Montserrat', sans-serif;
 }
-div.article-detail em{
-    display: block;
 
+div.article-detail em {
+    display: block;
+}
+
+div.image {
+    height: 50px;
+    width: 50px
 }

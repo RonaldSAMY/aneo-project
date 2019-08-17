@@ -38,6 +38,9 @@ export class UserService {
 
   constructor(private http: HttpService) { this.getUserFromLocalStorage() }
 
+  /**
+   * ce method est appel pour faire l'inscription
+   */
   register() {
     this.registerError = []
     this.resiterLoder = true;
@@ -63,6 +66,10 @@ export class UserService {
     )
   }
 
+  /**
+   * ce method est appelle pour appellé l'api pour avoir l'utilisateur
+   * est on stock ça dans le local storage
+   */
   signIn() {
     this.loginError = []
     this.resiterLoder = true;
@@ -93,6 +100,9 @@ export class UserService {
 
   }
 
+  /**
+   * get utilisateur de local storage
+   */
   getUserFromLocalStorage() {
     let connectedUser = localStorage.getItem('connectedUser')
     if(connectedUser != undefined) {
@@ -100,6 +110,9 @@ export class UserService {
     }
   }
 
+  /**
+   * method pour supprimer 
+   */
   disconnect() {
     localStorage.removeItem('connectedUser')
     this.connectedUser = null

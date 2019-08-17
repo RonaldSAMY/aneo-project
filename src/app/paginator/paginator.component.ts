@@ -16,8 +16,15 @@ export class PaginatorComponent implements OnInit {
 
   public totalPages:number = 0
 
-
-  constructor(public paginatorS:PaginatorService ,private routerS:Router, private routeS:ActivatedRoute,private profileS:ProfileService,private articleS:ArticleService) { 
+  /**
+   * 
+   * @param paginatorS 
+   * @param routerS 
+   * @param routeS 
+   * @param profileS 
+   * @param articleS 
+   */
+  constructor(public paginatorS:PaginatorService ,private routerS:Router, private routeS:ActivatedRoute,private profileS:ProfileService,public articleS:ArticleService) { 
     let page
     this.routeS.params.subscribe(
       param => {
@@ -40,7 +47,13 @@ export class PaginatorComponent implements OnInit {
     
   }
 
-
+  /**
+   * quand ce method est appellé on redirige vers la page demandé
+   * on verifié le method est appellé de page utilisateur ou l'article
+   * pour prendre ls desicion les article qui doit afficher vraiment l'article d'utilisateur
+   * ou tous les articles
+   * @param page 
+   */
   public goto(page:number) {
     if(this.profileS.currentUser != null) {
       this.routerS.navigate(['profile',this.profileS.currentUser.username,'page',page])

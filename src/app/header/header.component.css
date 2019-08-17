@@ -1,11 +1,12 @@
-div.nav {
-    height: 50px;
-    /* width: 100vw; */
+nav.nav {
+    /*  height: 50px;
+    width: 100vw; */
     padding: 5px 20px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
-div.nav a {
+nav.nav a {
     text-decoration: none;
     padding: 15px;
     color: #FE5D9F;
@@ -15,11 +16,12 @@ div.nav a {
     font-size: 12px
 }
 
-div.nav a:hover,a.active{
+nav.nav a:hover,
+a.active {
     background: #FE5D9F;
     color: #F1E4F3!important;
 }
 
-a.home-link:hover{
+a.home-link:hover {
     background: #fff!important
 }

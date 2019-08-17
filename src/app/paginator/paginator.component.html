@@ -1,5 +1,5 @@
 <aneo-app-article></aneo-app-article>
-<div class="paginator" *ngIf="paginatorS.totalPagesCount != 1">
+<div class="paginator" *ngIf="paginatorS.totalPagesCount != 1 && !articleS.searchPage">
     <nav aria-label="..." class="paginator">
         <ul class="pagination">
             <li class="page-item" *ngFor="let page of paginatorS.pageCountTable">

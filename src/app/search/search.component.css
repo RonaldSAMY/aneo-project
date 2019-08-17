@@ -1,3 +1,23 @@
 div.option .btn {
-    border: 1px solid #caca
+    border: 1px solid #caca;
 }
+
+div.results {
+    margin-top: 50px;
+}
+
+div.search input {
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    border: none;
+    border-bottom: 1px solid #caca;
+    box-shadow: none;
+    outline: none;
+}
+
+
+/*div.option {
+    display: inline-block;
+    width: 30%
+}*/

@@ -14,7 +14,7 @@ export class HttpInterceptorService implements HttpInterceptor{
     
     let header = {}
 
-    if(localStorage.getItem('connectedUser') != null) {
+    if(localStorage.getItem('connectedUser') != null) { // si l'user est connecté on ajoute le token dans l'header
         let token = JSON.parse(localStorage.getItem('connectedUser'))
       header = {
         'Authorization': 'Token '+token.token

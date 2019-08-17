@@ -13,6 +13,10 @@ export class ProfileService {
 
   constructor(private http:HttpService) { }
 
+  /**
+   * ce method est faire login
+   * @param username 
+   */
   getUser(username:string) {
     this.currentUser = null
     let url = '/profiles/'+username

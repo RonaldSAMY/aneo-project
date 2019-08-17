@@ -3,36 +3,35 @@
 </div>
 <div class="container" *ngIf="!articleS.httpReqOnProcess">
     <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-6 col-6" *ngFor="let article of articleS.allArticles; let i = index">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let article of articleS.allArticles; let i = index">
             <div class="card">
                 <div class="card-body">
-                    <div class="auteur">
-                        <div class="image">
-                            <img src="{{article.author.image}}" alt="" srcset="">
-                        </div>
-                        <div class="detail">
-                            <h2><a [routerLink]="[ '/profile',article.author.username ]">{{article.author.username}}</a>
-                            </h2>
-                            <em>{{article.createdAt | date}}</em>
-                        </div>
-                    </div>
-                    <div class="article">
-                        <div class="title">
-                            <h2 class="text-center ">{{article.title|slice:0:15}}</h2>
-                        </div>
-                        <div class="slug">
-                            <h3 class="text-center">{{article.slug|slice:0:20 }}</h3>
-                        </div>
-                        <div class="detail text-center">
-                            <a [routerLink]="[ '/article',article.slug ]">voir plus</a>
-                            <a (click)="delete(article.slug)" *ngIf="profileS.profilePage && profileS.currentUser.username == userS.connectedUser.username" style="margin-left: 25px">supprime</a>
+                    <div class="auteur col-12">
+                        <div class="row">
+                            <div class="image col-4">
+                                <img src="{{article.author.image}}" alt="" srcset="" class="img-thumbnail">
+                            </div>
+                            <div class="detail col-6">
+                                <h2><a [routerLink]="[ '/profile',article.author.username ]">{{article.author.username}}</a>
+                                </h2>
+                                <em>{{article.createdAt | date}}</em>
+                            </div>
                         </div>
                     </div>
-                    <!--<h5 class="card-title">{{article.title}}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{article.slug}}</h6>
-                    <a [routerLink]="[ '/article',article.slug ]" routerLinkActive="active" class="card-link">voir
-                        plus</a>
-                    <a [routerLink]="[ '/profile',article.author.username ]" routerLinkActive="active" class="card-link">Auteur</a> -->
+                    <div class="article col-12">
+                        <div class="row">
+                            <div class="title col-12">
+                                <h2 class="text-center ">{{article.title|slice:0:15}}</h2>
+                            </div>
+                            <div class="slug col-12">
+                                <h3 class="text-center">{{article.slug|slice:0:20 }}</h3>
+                            </div>
+                            <div class="detail text-center col-12">
+                                <a [routerLink]="[ '/article',article.slug ]">voir plus</a>
+                                <a (click)="delete(article.slug)" *ngIf="profileS.profilePage && userS.connectedUser != null && profileS.currentUser.username == userS.connectedUser.username" style="margin-left: 25px">supprime</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

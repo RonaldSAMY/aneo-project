@@ -4,20 +4,20 @@
 <div class="container article-detail" *ngIf="articleS.currentArticle != null">
     <h1 class="text-center">{{articleS.currentArticle.title}}</h1>
     <em class="text-center"><span>{{articleS.currentArticle.slug}}</span></em>
-    <div class="date">
-        <em class="date-create">{{articleS.currentArticle.createdAt}}</em>
-        <em class="date-updated">{{articleS.currentArticle.updatedAt}}</em>
+    <div class="date row mt-2">
+        <em class="date-create col-6 text-right">{{articleS.currentArticle.createdAt | date}}</em>
+        <em class="date-updated col-6 text-left">{{articleS.currentArticle.updatedAt | date}}</em>
     </div>
     <p>{{articleS.currentArticle.description}}</p>
     <p>{{articleS.currentArticle.body}}</p>
     <ul>
         <li *ngFor="let tag of articleS.currentArticle.tagList">{{tag}}</li>
     </ul>
-    <div class="auteur">
-        <div class="image">
-            <img src="{{articleS.currentArticle.author.image}}" alt="" srcset="">
+    <div class="auteur row">
+        <div class="image col-2">
+            <img src="{{articleS.currentArticle.author.image}}" alt="" srcset="" class="img-thumbnail">
         </div>
-        <div class="detail">
+        <div class="detail col-3">
             <h2><a [routerLink]="[ '/profile',articleS.currentArticle.author.username ]">{{articleS.currentArticle.author.username}}</a>
             </h2>
         </div>
