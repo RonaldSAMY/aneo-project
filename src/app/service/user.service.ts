@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { NewUser, ErrorAneo, LoginUser, User } from '../interface/interfaces';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +37,7 @@ export class UserService {
 
   public userSigned:boolean = false;
 
-  constructor(private http: HttpService) { this.getUserFromLocalStorage() }
+  constructor(private http: HttpService, private routeS:Router) { this.getUserFromLocalStorage() }
 
   /**
    * ce method est appel pour faire l'inscription
@@ -49,7 +50,10 @@ export class UserService {
     }
     this.http.post(user, "/users").subscribe(
       (res:any) => {
+        this.connectedUser = res.user
+        localStorage.setItem('connectedUser',JSON.stringify(this.connectedUser))
         this.resiterLoder = false;
+        this.routeS.navigate(['/editor'])
       },e => {
         let err = e.error.errors
         for ( var key in err ) {
@@ -82,6 +86,7 @@ export class UserService {
         this.connectedUser = res.user
         localStorage.setItem('connectedUser',JSON.stringify(this.connectedUser))
         this.resiterLoder = false
+        this.routeS.navigate(['/editor'])
       },e => {
         let err = e.error.errors
         for ( var key in err ) {
