@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpService } from "./http.service";
 import { Article, NewArticle, ErrorAneo } from "../interface/interfaces";
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: "root"
@@ -26,7 +27,7 @@ export class ArticleService {
     title: ""
   };
 
-  constructor(private http: HttpService) {
+  constructor(private http: HttpService, private routeS:Router) {
   }
 
  
@@ -133,8 +134,8 @@ export class ArticleService {
     this.httpReqOnProcess = true;
     this.http.post(article,'/articles').subscribe(
       (res:any) => {
-        console.log(res);
         this.httpReqOnProcess = false
+        this.routeS.navigate(['/article',res.article.slug])
       },e => {
         let err = e.error.errors;
         console.log(err)

@@ -28,7 +28,7 @@
                             </div>
                             <div class="detail text-center col-12">
                                 <a [routerLink]="[ '/article',article.slug ]">voir plus</a>
-                                <a (click)="delete(article.slug)" *ngIf="profileS.profilePage && userS.connectedUser != null && profileS.currentUser.username == userS.connectedUser.username" style="margin-left: 25px">supprime</a>
+                                <a (click)="delete(article.slug)" *ngIf="profileS.profilePage && userS.connectedUser != null && profileS.currentUser.username == userS.connectedUser.username" style="margin-left: 25px; cursor: pointer">supprime</a>
                             </div>
                         </div>
                     </div>

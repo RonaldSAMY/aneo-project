@@ -52,7 +52,7 @@ export class HttpService {
    */
   delete(path: string) {
     let url = environment.api_server+path;
-    return this.httpC.delete(path)
+    return this.httpC.delete(url)
   }
 
 }
